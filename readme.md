@@ -4,14 +4,13 @@ This repository contains Kubernetes configurations for deploying a MongoDB datab
 
 ## Repository Structure
 
-```plaintext
 ├── mongo-secret.yml    # MongoDB credentials
 ├── configmap.yml       # MongoDB configuration
 ├── mongo.yaml          # MongoDB deployment and service
 └── webapp.yml          # Web application deployment and service
-<!--
 
-Components Overview
+
+ ### Components Overview
 1. Secret Configuration (mongo-secret.yml)
     - Contains encoded credentials for MongoDB authentication.
     - Base64 encoded username and password.
@@ -40,7 +39,7 @@ Components Overview
          - USER_NAME (from Secret)
          - USER_PWD (from Secret)
 
-Services
+### Services
 - MongoDB Service (mongo-service)
   - Type: ClusterIP
   - Port: 8080
@@ -73,21 +72,21 @@ Deployment Instructions
     kubectl apply -f webapp.yml
     ```
 
-Security Notes
+### Security Notes
 - Secrets are base64 encoded but should be handled securely.
 - MongoDB credentials are managed through Kubernetes Secrets.
 - Internal communication is handled through ClusterIP service.
 - External access is only available to the web application through NodePort 30008.
 
-Dependencies
+### Dependencies
 - Kubernetes cluster
 - kubectl CLI tool
 - Access to specified container images:
   - mongo:windowsservercore-ltsc2022
   - nanajanashia/k8s-demo-app:v1.0
 
-Network Architecture
+### Network Architecture
 - MongoDB runs on port 27017 (internal).
 - Web application runs on port 3000 (internal).
 - External access available on node port 30008.
--->
+
